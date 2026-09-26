@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Soporte Técnico Pro | Soluciones IT Confiables</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--purple:#8B5CF6;--cyan:#06B6D4;--magenta:#F43F5E;--green:#22c55e}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a12;color:#e2e8f0;font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0a0a12}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--purple),var(--cyan));border-radius:3px}
+.gtxt{background:linear-gradient(135deg,var(--purple),var(--cyan),var(--magenta));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gtxt2{background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:12px}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;line-height:1.2;margin-bottom:16px}
+.section-sub{color:#64748b;max-width:480px;margin:0 auto;line-height:1.7;font-size:15px}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(139,92,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:all .3s}
+#nav.scrolled{background:rgba(10,10,18,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(139,92,246,0.15);padding:12px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700}
+.logo-icon{background:linear-gradient(135deg,var(--purple),var(--cyan));padding:6px 11px;border-radius:9px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#fff}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{color:#94a3b8;font-size:14px;font-weight:500;transition:color .3s;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .3s;border-radius:2px}
+.nav-link:hover{color:#e2e8f0}
+.nav-link:hover::after{width:100%}
+.btn-nav{background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff !important;padding:10px 24px;border-radius:50px;font-weight:600;font-size:14px;transition:all .3s;box-shadow:0 4px 20px rgba(139,92,246,0.4)}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,0.6)}
+.hamburger{display:none;background:none;border:none;color:#fff;cursor:pointer;padding:6px}
+#mob-menu{display:none;position:fixed;inset:0;background:rgba(10,10,18,0.98);backdrop-filter:blur(24px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+#mob-menu.open{display:flex}
+.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:#fff;font-size:28px;cursor:pointer}
+.mob-link{font-size:26px;font-weight:700;color:#e2e8f0;transition:color .3s}
+.mob-link:hover{color:var(--cyan)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff !important;padding:14px 32px;border-radius:50px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 25px rgba(139,92,246,0.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px rgba(139,92,246,0.6)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#e2e8f0;padding:13px 31px;border-radius:50px;font-weight:600;font-size:15px;border:1px solid rgba(139,92,246,0.5);cursor:pointer;transition:all .3s}
+.btn-secondary:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 20px rgba(6,182,212,0.3);transform:translateY(-2px)}
+#hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 60px;position:relative;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:50px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:28px;font-size:13px;font-family:'JetBrains Mono',monospace;color:#cbd5e1}
+.dot-green{width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px #22c55e;animation:blink 2s ease infinite;display:inline-block;flex-shrink:0}
+.hero-title{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:700;line-height:1.15;margin-bottom:20px}
+.hero-role{font-size:18px;color:#94a3b8;font-weight:500;margin-bottom:14px}
+.hero-desc{color:#64748b;font-size:15px;max-width:480px;line-height:1.75;margin-bottom:40px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px}
+.float-wrap{display:flex;justify-content:flex-end}
+
+/* ── TARJETA CON FOTO ── */
+.float-card{
+  animation:float 6s ease-in-out infinite;
+  width:300px;
+  border-radius:24px;
+  padding:28px 24px 24px;
+  background:rgba(15,23,42,0.92);
+  border:1px solid rgba(139,92,246,0.3);
+  box-shadow:0 0 60px rgba(139,92,246,0.2);
+  text-align:center;
+}
+.profile-photo-wrap{
+  position:relative;
+  width:120px;
+  height:120px;
+  margin:0 auto 16px;
+}
+.profile-photo-ring{
+  position:absolute;
+  inset:-3px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--cyan),var(--magenta));
+  z-index:0;
+  animation:spin 6s linear infinite;
+}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.profile-photo-inner{
+  position:absolute;
+  inset:3px;
+  border-radius:50%;
+  background:#0a0a12;
+  z-index:1;
+  overflow:hidden;
+}
+.profile-photo-inner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+.profile-name{
+  font-size:18px;
+  font-weight:700;
+  color:#e2e8f0;
+  margin-bottom:4px;
+}
+.profile-role{
+  font-size:12px;
+  font-family:'JetBrains Mono',monospace;
+  color:var(--cyan);
+  margin-bottom:6px;
+}
+.profile-avail{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  color:#94a3b8;
+  background:rgba(34,197,94,0.1);
+  border:1px solid rgba(34,197,94,0.25);
+  padding:4px 12px;
+  border-radius:20px;
+  margin-bottom:20px;
+}
+.profile-divider{
+  height:1px;
+  background:rgba(255,255,255,0.06);
+  margin-bottom:20px;
+}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-box{text-align:center;padding:12px 8px;border-radius:12px}
+.stat-box.sp{background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25)}
+.stat-box.sc{background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.25)}
+.stat-box.sm{background:rgba(244,63,94,0.12);border:1px solid rgba(244,63,94,0.25)}
+.stat-num{font-size:20px;font-weight:700;display:block}
+.stat-lbl{font-size:10px;color:#475569;margin-top:3px;display:block}
+.profile-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:16px}
+.profile-tag{font-size:10px;font-family:'JetBrains Mono',monospace;padding:3px 10px;border-radius:20px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);color:#94a3b8}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.tw-cursor{display:inline-block;width:2px;height:1em;background:var(--cyan);margin-left:2px;animation:blink 1s step-end infinite;vertical-align:text-bottom}
+#skills{padding:96px 0}
+.skills-header{text-align:center;margin-bottom:48px}
+.carousel-wrap{overflow:hidden;mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);margin-bottom:14px}
+.carousel-track{display:flex;gap:20px;animation:slideL 30s linear infinite;width:max-content}
+.carousel-track-r{display:flex;gap:20px;animation:slideR 36s linear infinite;width:max-content}
+@keyframes slideL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes slideR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.chip{display:flex;align-items:center;gap:9px;padding:11px 20px;border-radius:50px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);white-space:nowrap;font-size:13px;font-weight:500;transition:all .3s;cursor:default}
+.chip:hover{border-color:var(--purple);box-shadow:0 0 14px rgba(139,92,246,0.3);transform:scale(1.05)}
+.chip-ico{font-size:17px}
+.skills-bars{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;margin-top:64px}
+.skill-item{margin-bottom:22px}
+.skill-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+.skill-name{color:#cbd5e1;font-weight:500}
+.skill-pct{font-family:'JetBrains Mono',monospace;color:var(--cyan)}
+.skill-track{height:4px;background:rgba(255,255,255,0.06);border-radius:2px}
+.skill-fill{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));width:0;transition:width 1.5s cubic-bezier(.4,0,.2,1)}
+.skill-fill.go{width:var(--w)}
+#projects{padding:96px 0}
+.proj-header{text-align:center;margin-bottom:64px}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj-card{background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;transition:all .4s;cursor:pointer;position:relative}
+.proj-card:hover{transform:translateY(-8px);border-color:transparent;box-shadow:0 0 0 1px var(--purple),0 24px 60px rgba(139,92,246,0.2)}
+.proj-thumb{height:170px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.proj-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,92,246,0.18),rgba(6,182,212,0.18));opacity:0;transition:opacity .4s}
+.proj-card:hover .proj-overlay{opacity:1}
+.proj-emoji{font-size:56px;position:relative;z-index:1}
+.proj-body{padding:22px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.ptag{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:.5px;color:#e2e8f0}
+.proj-title{font-weight:700;font-size:17px;margin-bottom:8px;color:#e2e8f0}
+.proj-desc{color:#64748b;font-size:13px;line-height:1.65;margin-bottom:14px}
+.proj-metric{display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;background:rgba(255,255,255,0.04);margin-bottom:18px}
+.proj-metric-txt{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan)}
+.proj-btns{display:flex;gap:10px}
+.pb1{flex:1;display:flex;align-items:center;justify-content:center;padding:9px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#fff !important;font-size:13px;font-weight:600;transition:all .3s}
+.pb1:hover{transform:translateY(-1px)}
+.pb2{flex:1;display:flex;align-items:center;justify-content:center;padding:8px;border-radius:10px;background:transparent;color:#e2e8f0;font-size:13px;font-weight:600;border:1px solid rgba(139,92,246,0.4);transition:all .3s}
+.pb2:hover{border-color:var(--cyan);color:var(--cyan)}
+.proj-more{text-align:center;margin-top:40px}
+#services{padding:96px 0}
+.svc-header{text-align:center;margin-bottom:56px}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.bento-card{background:rgba(15,23,42,0.72);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:28px;transition:all .4s;position:relative;overflow:hidden}
+.bento-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(139,92,246,0.07),transparent 60%);pointer-events:none}
+.bento-card:hover{border-color:rgba(139,92,246,0.4);box-shadow:0 0 36px rgba(139,92,246,0.14);transform:translateY(-4px)}
+.bento-wide{grid-column:span 2}
+.bento-ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);margin-bottom:18px}
+.bento-title{font-size:17px;font-weight:700;margin-bottom:10px}
+.bento-desc{color:#64748b;font-size:13px;line-height:1.65;margin-bottom:18px}
+.bento-items{display:flex;flex-direction:column;gap:8px}
+.bento-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#64748b}
+#testimonials{padding:96px 0}
+.metrics-box{background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.2);border-radius:24px;padding:48px;margin-bottom:72px}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.metric-num{font-size:clamp(2rem,3.5vw,3rem);font-weight:700;display:block;margin-bottom:8px}
+.metric-lbl{color:#475569;font-size:13px}
+.test-header{text-align:center;margin-bottom:48px}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test-card{background:rgba(15,23,42,0.72);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:28px;transition:all .3s}
+.test-card:hover{border-color:rgba(6,182,212,0.3);box-shadow:0 0 28px rgba(6,182,212,0.1)}
+.test-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+.test-av{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.test-name{font-weight:700;color:#e2e8f0;margin-bottom:3px}
+.test-role{font-size:12px;color:#475569;font-family:'JetBrains Mono',monospace}
+.test-stars{margin-left:auto;color:#FBBF24;font-size:13px;white-space:nowrap}
+.test-quote{color:#64748b;font-size:13px;line-height:1.7;font-style:italic}
+#contact{padding:96px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.contact-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;margin-bottom:20px;line-height:1.25}
+.contact-desc{color:#64748b;font-size:15px;line-height:1.75;margin-bottom:36px}
+.contact-items{display:flex;flex-direction:column;gap:20px;margin-bottom:36px}
+.contact-item{display:flex;align-items:center;gap:14px}
+.contact-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-lbl{font-size:12px;color:#475569;margin-bottom:3px}
+.contact-val{color:#e2e8f0;font-weight:500;font-size:15px}
+.social-row{display:flex;gap:12px}
+.soc-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#94a3b8;transition:all .3s}
+.soc-btn:hover{color:#fff;border-color:var(--cyan);box-shadow:0 0 18px rgba(6,182,212,0.4);transform:translateY(-3px)}
+.form-box{background:rgba(15,23,42,0.9);border-radius:18px;padding:32px;border:1px solid rgba(139,92,246,0.25)}
+.form-title{font-size:19px;font-weight:700;margin-bottom:24px;color:#e2e8f0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{margin-bottom:14px}
+.form-lbl{display:block;font-size:13px;color:#94a3b8;margin-bottom:7px}
+.finput{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:13px 16px;color:#e2e8f0;font-family:'Space Grotesk',sans-serif;font-size:14px;transition:all .3s;outline:none}
+.finput:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(139,92,246,0.15)}
+.finput::placeholder{color:#334155}
+select.finput{cursor:pointer;appearance:none}
+textarea.finput{resize:vertical;min-height:110px}
+.form-submit{width:100%;justify-content:center;margin-top:8px}
+#form-ok{display:none;text-align:center;padding:32px 0}
+footer{border-top:1px solid rgba(255,255,255,0.06);padding:44px 0 28px}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.foot-copy{color:#334155;font-size:13px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.v{opacity:1;transform:translateY(0)}
+.rev-l{opacity:0;transform:translateX(-36px);transition:opacity .7s ease,transform .7s ease}
+.rev-r{opacity:0;transform:translateX(36px);transition:opacity .7s ease,transform .7s ease}
+.rev-l.v,.rev-r.v{opacity:1;transform:translateX(0)}
+.particle{position:fixed;border-radius:50%;pointer-events:none;z-index:0;animation:pf linear infinite}
+@keyframes pf{0%{transform:translateY(0);opacity:0}10%{opacity:.5}90%{opacity:.2}100%{transform:translateY(-100vh);opacity:0}}
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr}
+  .float-wrap{justify-content:flex-start;margin-top:32px}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .test-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .skills-bars{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .btn-nav-wrap{display:none}
+  .hamburger{display:block}
+  .projects-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .bento-wide{grid-column:span 1}
+  .test-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="#hero" class="logo">
+      <span class="logo-icon">🛠️</span>
+      <span class="gtxt2">SoportePro</span>
+    </a>
+    <div class="nav-links">
+      <a href="#skills" class="nav-link">Habilidades</a>
+      <a href="#projects" class="nav-link">Casos</a>
+      <a href="#services" class="nav-link">Servicios</a>
+      <a href="#testimonials" class="nav-link">Logros</a>
+      <a href="#contact" class="nav-link">Contacto</a>
+    </div>
+    <div class="btn-nav-wrap">
+      <a href="#contact" class="btn-nav">Contratar ✦</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mob-menu">
+  <button class="mob-close" onclick="toggleMenu()">✕</button>
+  <a href="#skills" class="mob-link" onclick="toggleMenu()">Habilidades</a>
+  <a href="#projects" class="mob-link" onclick="toggleMenu()">Casos</a>
+  <a href="#services" class="mob-link" onclick="toggleMenu()">Servicios</a>
+  <a href="#testimonials" class="mob-link" onclick="toggleMenu()">Logros</a>
+  <a href="#contact" class="mob-link" onclick="toggleMenu()">Contacto</a>
+  <a href="#contact" class="btn-primary" style="margin-top:8px" onclick="toggleMenu()">Contratar ✦</a>
+</div>
+
+<section id="hero">
+  <div class="hero-orb" style="width:640px;height:640px;background:rgba(139,92,246,0.13);top:-240px;right:-240px"></div>
+  <div class="hero-orb" style="width:440px;height:440px;background:rgba(6,182,212,0.08);bottom:-130px;left:-180px"></div>
+  <div class="hero-orb" style="width:300px;height:300px;background:rgba(244,63,94,0.07);top:44%;left:36%"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <span class="dot-green"></span>
+          Disponible para nuevos clientes
+        </div>
+        <h1 class="hero-title">
+          Tu problema técnico<br>
+          <span class="gtxt">resuelto rápido</span><br>
+          y sin complicaciones
+        </h1>
+        <p class="hero-role">
+          Soy&nbsp;<strong class="gtxt2" id="typewriter">Técnico en Soporte IT</strong><span class="tw-cursor"></span>
+        </p>
+        <p class="hero-desc">Brindo soporte técnico confiable con 2 años de experiencia. Soluciono problemas de hardware, software, redes, backups y servidores con atención personalizada y respuesta rápida.</p>
+        <div class="hero-btns">
+          <a href="#services" class="btn-primary">
+            <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10l5 5-5 5"/><path d="M4 4v7a4 4 0 004 4h12"/></svg>
+            Ver Servicios
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Solicitar Ayuda
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+           TARJETA CON FOTO DE PERFIL
+           👉 Cambia la URL de la imagen
+      ══════════════════════════════ -->
+      <div class="float-wrap">
+        <div class="float-card">
+
+          <!-- FOTO — 👉 REEMPLAZA LA URL AQUÍ -->
+          <div class="profile-photo-wrap">
+            <div class="profile-photo-ring"></div>
+            <div class="profile-photo-inner">
+              <img src="TU_FOTO_AQUI.jpg" alt="Foto de perfil"
+                onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:42px;background:linear-gradient(135deg,rgba(139,92,246,0.3),rgba(6,182,212,0.3))\'>🧑‍💻</div>'"/>
+            </div>
+          </div>
+
+          <!-- NOMBRE Y ROL — 👉 CAMBIA TU NOMBRE -->
+          <div class="profile-name"></div>
+          <div class="profile-role">Técnico en Soporte IT</div>
+
+          <!-- BADGE DISPONIBLE -->
+          <div class="profile-avail">
+            <span class="dot-green"></span>
+            Disponible ahora
+          </div>
+
+          <!-- DIVISOR -->
+          <div class="profile-divider"></div>
+
+          <!-- MÉTRICAS -->
+          <div class="stats-row">
+            <div class="stat-box sp">
+              <span class="stat-num" style="background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent">2+</span>
+              <span class="stat-lbl">Años exp.</span>
+            </div>
+            <div class="stat-box sc">
+              <span class="stat-num" style="color:var(--cyan)">150+</span>
+              <span class="stat-lbl">Casos</span>
+            </div>
+            <div class="stat-box sm">
+              <span class="stat-num" style="color:var(--magenta)">24/7</span>
+              <span class="stat-lbl">Soporte</span>
+            </div>
+          </div>
+
+          <!-- TAGS DE HABILIDADES -->
+          <div class="profile-tags">
+            <span class="profile-tag">Backups</span>
+            <span class="profile-tag">Redes</span>
+            <span class="profile-tag">Windows</span>
+            <span class="profile-tag">Servidores</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="skills-header reveal">
+      <span class="section-label">Herramientas & Conocimientos</span>
+      <h2 class="section-title">Lo que <span class="gtxt">domino</span></h2>
+      <p class="section-sub">Herramientas, sistemas y tecnologías que utilizo para resolver problemas técnicos de forma efectiva.</p>
+    </div>
+  </div>
+  <div class="carousel-wrap"><div class="carousel-track" id="row1"></div></div>
+  <div class="carousel-wrap"><div class="carousel-track-r" id="row2"></div></div>
+  <div class="container">
+    <div class="skills-bars reveal" id="skills-bars"></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="proj-header reveal">
+      <span class="section-label">Casos de Soporte</span>
+      <h2 class="section-title">Problemas que <span class="gtxt">he resuelto</span></h2>
+      <p class="section-sub">Casos reales donde apliqué mis conocimientos para devolver la tranquilidad a mis clientes.</p>
+    </div>
+    <div class="projects-grid" id="proj-grid"></div>
+    <div class="proj-more reveal"><a href="#contact" class="btn-secondary">Solicitar soporte ahora →</a></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="svc-header reveal">
+      <span class="section-label">Servicios</span>
+      <h2 class="section-title">¿En qué puedo <span class="gtxt">ayudarte?</span></h2>
+      <p class="section-sub">Servicios de soporte técnico adaptados a tus necesidades, con atención rápida y soluciones reales.</p>
+    </div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="metrics-box reveal">
+      <div class="metrics-grid">
+        <div>
+          <span class="metric-num gtxt2 counter" data-to="150" data-suf="+">0+</span>
+          <span class="metric-lbl">Casos resueltos</span>
+        </div>
+        <div>
+          <span class="metric-num counter" style="color:var(--cyan)" data-to="2" data-suf=" años">0</span>
+          <span class="metric-lbl">De experiencia</span>
+        </div>
+        <div>
+          <span class="metric-num counter" style="color:var(--magenta)" data-to="98" data-suf="%">0%</span>
+          <span class="metric-lbl">Clientes satisfechos</span>
+        </div>
+        <div>
+          <span class="metric-num gtxt2 counter" data-to="24" data-suf="/7">0</span>
+          <span class="metric-lbl">Disponibilidad</span>
+        </div>
+      </div>
+    </div>
+    <div class="test-header reveal">
+      <span class="section-label">Testimonios</span>
+      <h2 class="section-title">Lo que dicen mis <span class="gtxt">clientes</span></h2>
+    </div>
+    <div class="test-grid" id="test-grid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="rev-l">
+        <span class="section-label">Contacto</span>
+        <h2 class="contact-title">¿Tienes un <span class="gtxt">problema técnico?</span></h2>
+        <p class="contact-desc">No esperes más. Cuéntame qué falla y lo resolvemos juntos. Respondo rápido y trabajo con honestidad.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon" style="background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3)">
+              <svg width="20" height="20" fill="none" stroke="#8B5CF6" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6L12 13 2 6"/></svg>
+            </div>
+            <div>
+              <div class="contact-lbl">Email</div>
+              <div class="contact-val">soporte@tudominio.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon" style="background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3)">
+              <svg width="20" height="20" fill="none" stroke="#06B6D4" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.57a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-lbl">WhatsApp / Teléfono</div>
+              <div class="contact-val">+1 (555) 000-0000</div>
+            </div>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="#" class="soc-btn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" class="soc-btn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          <a href="#" class="soc-btn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div class="rev-r">
+        <div class="form-box">
+          <h3 class="form-title">Cuéntame tu problema 🔧</h3>
+          <form id="cform" onsubmit="sendForm(event)">
+            <div class="form-row">
+              <div>
+                <label class="form-lbl">Nombre</label>
+                <input type="text" class="finput" placeholder="Tu nombre" required>
+              </div>
+              <div>
+                <label class="form-lbl">Email / WhatsApp</label>
+                <input type="text" class="finput" placeholder="Contacto" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Tipo de problema</label>
+              <select class="finput">
+                <option value="" style="background:#0f172a">Selecciona el tipo</option>
+                <option style="background:#0f172a">PC lenta o con errores</option>
+                <option style="background:#0f172a">Problemas de red / WiFi</option>
+                <option style="background:#0f172a">Instalación de programas</option>
+                <option style="background:#0f172a">Virus o malware</option>
+                <option style="background:#0f172a">Backup & Respaldos</option>
+                <option style="background:#0f172a">Soporte de Servidor</option>
+                <option style="background:#0f172a">Recuperación de datos</option>
+                <option style="background:#0f172a">Soporte remoto</option>
+                <option style="background:#0f172a">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Describe tu problema</label>
+              <textarea class="finput" placeholder="Cuéntame qué está pasando con tu equipo..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit">
+              <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Enviar solicitud
+            </button>
+          </form>
+          <div id="form-ok">
+            <div style="font-size:48px;margin-bottom:14px">✅</div>
+            <div style="font-size:19px;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent">¡Solicitud recibida!</div>
+            <div style="color:#64748b;margin-top:8px;font-size:14px">Te contactaré en menos de 1 hora.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-icon">🛠️</span>
+        <span class="gtxt2">SoportePro</span>
+      </a>
+      <p class="foot-copy">© 2025 SoportePro. Soluciones técnicas con dedicación.</p>
+      <div class="social-row">
+        <a href="#" class="soc-btn"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="soc-btn"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+        <a href="#" class="soc-btn"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+function toggleMenu(){
+  document.getElementById('mob-menu').classList.toggle('open');
+}
+var roles=['Técnico en Soporte IT','Especialista en Hardware','Asistente de Redes','Técnico en Backups & Respaldos','Administrador Jr. de Servidores','Soporte Remoto 24/7'];
+var ri=0,ci=0,deleting=false;
+var tw=document.getElementById('typewriter');
+function type(){
+  var w=roles[ri];
+  tw.textContent=deleting?w.slice(0,ci--):w.slice(0,ci++);
+  var s=deleting?55:105;
+  if(!deleting&&ci>w.length){s=1900;deleting=true;}
+  else if(deleting&&ci<0){deleting=false;ri=(ri+1)%roles.length;s=380;}
+  setTimeout(type,s);
+}
+type();
+var r1=[
+  {i:'🪟',n:'Windows 10/11'},{i:'🍎',n:'macOS'},{i:'🐧',n:'Linux'},{i:'🌐',n:'Redes TCP/IP'},
+  {i:'🔒',n:'Antivirus'},{i:'💾',n:'Backups'},{i:'🗄️',n:'Servidores'},{i:'📡',n:'WiFi / Router'},
+  {i:'☁️',n:'Google Workspace'},{i:'📦',n:'Microsoft 365'},{i:'🔧',n:'Hardware PC'},{i:'💻',n:'Laptops'}
+];
+var r2=[
+  {i:'🛡️',n:'Seguridad IT'},{i:'🖥️',n:'Escritorio Remoto'},{i:'📊',n:'Excel / Office'},{i:'🔌',n:'Cableado Red'},
+  {i:'🗄️',n:'Windows Server'},{i:'⚙️',n:'Active Directory'},{i:'☁️',n:'Backup en Nube'},{i:'🔁',n:'Recuperación'},
+  {i:'📋',n:'Ticketing'},{i:'🔑',n:'VPN'},{i:'🗂️',n:'NAS / Storage'},{i:'🐍',n:'Python Básico'}
+];
+function buildRow(id,arr){
+  var el=document.getElementById(id);
+  var d=arr.concat(arr);
+  el.innerHTML=d.map(function(t){return'<div class="chip"><span class="chip-ico">'+t.i+'</span><span>'+t.n+'</span></div>';}).join('');
+}
+buildRow('row1',r1);
+buildRow('row2',r2);
+var skills=[
+  {n:'Soporte Windows / macOS',p:88},{n:'Diagnóstico de Hardware',p:82},
+  {n:'Redes & Conectividad',p:75},{n:'Microsoft Office 365',p:85},
+  {n:'Backups & Recuperación',p:80},{n:'Soporte Remoto',p:90},
+  {n:'Servidores (básico)',p:50},{n:'Atención al Cliente',p:95}
+];
+var sbEl=document.getElementById('skills-bars');
+var leftD=document.createElement('div');
+var rightD=document.createElement('div');
+skills.forEach(function(s,i){
+  var h='<div class="skill-item"><div class="skill-head"><span class="skill-name">'+s.n+'</span><span class="skill-pct">'+s.p+'%</span></div><div class="skill-track"><div class="skill-fill" style="--w:'+s.p+'%"></div></div></div>';
+  if(i<4){leftD.insertAdjacentHTML('beforeend',h);}else{rightD.insertAdjacentHTML('beforeend',h);}
+});
+sbEl.appendChild(leftD);
+sbEl.appendChild(rightD);
+var projs=[
+  {t:'Recuperación de PC infectada',d:'PC con múltiples virus y ransomware. Eliminé las amenazas, recuperé archivos y dejé el sistema limpio y protegido.',e:'🛡️',bg:'linear-gradient(135deg,rgba(139,92,246,.3),rgba(6,182,212,.25))',tags:['Antivirus','Windows','Malware'],tc:['rgba(139,92,246,.3)','rgba(6,182,212,.25)','rgba(244,63,94,.2)'],m:'100% archivos recuperados',mi:'✅'},
+  {t:'Configuración de red empresarial',d:'Instalación y configuración de router, switch y puntos de acceso WiFi para oficina con 15 equipos.',e:'📡',bg:'linear-gradient(135deg,rgba(6,182,212,.3),rgba(34,197,94,.2))',tags:['Redes','Router','WiFi'],tc:['rgba(6,182,212,.25)','rgba(34,197,94,.2)','rgba(139,92,246,.2)'],m:'15 equipos conectados',mi:'🌐'},
+  {t:'Migración a Windows 11',d:'Migración completa de 8 equipos a Windows 11 con transferencia de datos y configuración de perfil.',e:'🪟',bg:'linear-gradient(135deg,rgba(34,197,94,.18),rgba(6,182,212,.25))',tags:['Windows 11','Migración','Datos'],tc:['rgba(34,197,94,.2)','rgba(6,182,212,.2)','rgba(139,92,246,.2)'],m:'8 equipos migrados',mi:'💻'},
+  {t:'Soporte remoto continuo',d:'Asistencia técnica remota mensual para PYME: actualizaciones, backups automáticos y resolución de incidencias.',e:'🖥️',bg:'linear-gradient(135deg,rgba(244,63,94,.2),rgba(139,92,246,.3))',tags:['Remoto','Backup','PYME'],tc:['rgba(244,63,94,.2)','rgba(139,92,246,.2)','rgba(6,182,212,.2)'],m:'0 tiempos caídos/mes',mi:'⚡'},
+  {t:'Implementación de Backups',d:'Sistema de respaldo automático diario con backup local en NAS y copia en nube con retención de 30 días.',e:'💾',bg:'linear-gradient(135deg,rgba(6,182,212,.25),rgba(244,63,94,.18))',tags:['Backup','NAS','Nube'],tc:['rgba(6,182,212,.25)','rgba(244,63,94,.2)','rgba(34,197,94,.2)'],m:'30 días de retención',mi:'🔁'},
+  {t:'Soporte en Servidor Windows',d:'Mantenimiento básico de Windows Server: actualizaciones, monitoreo de espacio y reinicio de servicios.',e:'🗄️',bg:'linear-gradient(135deg,rgba(139,92,246,.25),rgba(34,197,94,.18))',tags:['Windows Server','Monitoreo','Servicios'],tc:['rgba(139,92,246,.2)','rgba(34,197,94,.2)','rgba(6,182,212,.2)'],m:'99% uptime mantenido',mi:'🖥️'}
+];
+var pg=document.getElementById('proj-grid');
+projs.forEach(function(p){
+  var tags=p.tags.map(function(t,i){return'<span class="ptag" style="background:'+p.tc[i]+'">'+t+'</span>';}).join('');
+  pg.insertAdjacentHTML('beforeend','<div class="proj-card reveal"><div class="proj-thumb" style="background:'+p.bg+'"><div class="proj-overlay"></div><span class="proj-emoji">'+p.e+'</span></div><div class="proj-body"><div class="proj-tags">'+tags+'</div><div class="proj-title">'+p.t+'</div><div class="proj-desc">'+p.d+'</div><div class="proj-metric"><span>'+p.mi+'</span><span class="proj-metric-txt">'+p.m+'</span></div><div class="proj-btns"><a href="#contact" class="pb1">Solicitar →</a><a href="#contact" class="pb2">Consultar</a></div></div></div>');
+});
+var svcs=[
+  {i:'🖥️',t:'Soporte Técnico General',d:'Resolución de problemas en PC, laptops y escritorio. Diagnóstico rápido y solución efectiva.',wide:true,acc:'#8B5CF6',items:['Errores del sistema','PC lenta o congelada','Pantalla azul (BSOD)']},
+  {i:'📡',t:'Redes & Internet',d:'Configuración de WiFi, routers y solución de problemas de conectividad.',wide:false,acc:'#06B6D4',items:['Configurar router','Ampliar cobertura WiFi','VPN y seguridad']},
+  {i:'💾',t:'Backups & Respaldos',d:'Soluciones de respaldo automático local y en la nube para proteger tu información.',wide:false,acc:'#F43F5E',items:['Backup automático diario','Respaldo en nube','Recuperación de datos']},
+  {i:'🗄️',t:'Servidores (Nivel Básico)',d:'Soporte básico de Windows Server: actualizaciones, monitoreo y gestión de servicios.',wide:false,acc:'#22c55e',items:['Windows Server básico','Monitoreo de recursos','Reinicio de servicios']},
+  {i:'🔌',t:'Instalación & Configuración',d:'Instalación de programas, sistemas operativos y setup completo de equipos nuevos.',wide:true,acc:'#06B6D4',items:['Instalar Windows / macOS','Configurar Office 365','Setup de equipo nuevo']}
+];
+var bn=document.getElementById('bento');
+svcs.forEach(function(s){
+  var its=s.items.map(function(x){return'<div class="bento-item"><span style="color:'+s.acc+'">▸</span>'+x+'</div>';}).join('');
+  var cls='bento-card reveal'+(s.wide?' bento-wide':'');
+  bn.insertAdjacentHTML('beforeend','<div class="'+cls+'"><div class="bento-ico">'+s.i+'</div><div class="bento-title" style="color:'+s.acc+'">'+s.t+'</div><div class="bento-desc">'+s.d+'</div><div class="bento-items">'+its+'</div></div>');
+});
+var tests=[
+  {n:'Juan Pérez',r:'Cliente particular',av:'JP',c:'#8B5CF6',q:'Mi PC estaba llena de virus y la dejó como nueva. Rápido, honesto y muy profesional. ¡Lo recomiendo!'},
+  {n:'Laura Gómez',r:'Dueña de negocio',av:'LG',c:'#06B6D4',q:'Configuró el sistema de backup de mi empresa y ahora duermo tranquila sabiendo que mis datos están seguros.'},
+  {n:'Roberto Silva',r:'Administrador de oficina',av:'RS',c:'#F43F5E',q:'Nos ayudó con el servidor. Aunque su conocimiento era básico, resolvió el problema y aprendió muy rápido.'}
+];
+var tg=document.getElementById('test-grid');
+tests.forEach(function(t){
+  tg.insertAdjacentHTML('beforeend','<div class="test-card reveal"><div class="test-top"><div class="test-av" style="background:'+t.c+'">'+t.av+'</div><div><div class="test-name">'+t.n+'</div><div class="test-role">'+t.r+'</div></div><div class="test-stars">★★★★★</div></div><p class="test-quote">"'+t.q+'"</p></div>');
+});
+var cDone=false;
+function runCounters(){
+  document.querySelectorAll('.counter').forEach(function(el){
+    var to=parseInt(el.dataset.to),suf=el.dataset.suf||'',cur=0,inc=to/55;
+    var iv=setInterval(function(){cur=Math.min(cur+inc,to);el.textContent=Math.floor(cur)+suf;if(cur>=to){el.textContent=to+suf;clearInterval(iv);}},22);
+  });
+}
+var sbDone=false;
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('v');
+      if(!cDone&&e.target.closest('#testimonials')){cDone=true;setTimeout(runCounters,250);}
+      if(!sbDone&&e.target.closest('#skills')){sbDone=true;setTimeout(function(){document.querySelectorAll('.skill-fill').forEach(function(b){b.classList.add('go');});},350);}
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal,.rev-l,.rev-r').forEach(function(el){obs.observe(el);});
+function sendForm(e){
+  e.preventDefault();
+  document.getElementById('cform').style.display='none';
+  document.getElementById('form-ok').style.display='block';
+}
+var pc=['rgba(139,92,246,.55)','rgba(6,182,212,.55)','rgba(244,63,94,.4)'];
+for(var i=0;i<16;i++){
+  (function(idx){
+    setTimeout(function(){
+      var p=document.createElement('div');p.className='particle';
+      var sz=Math.random()*2.5+1;
+      p.style.cssText='width:'+sz+'px;height:'+sz+'px;background:'+pc[Math.floor(Math.random()*3)]+';left:'+Math.floor(Math.random()*100)+'vw;top:'+Math.floor(Math.random()*100)+'vh;animation-duration:'+(9+Math.random()*11)+'s;animation-delay:'+Math.random()*5+'s';
+      document.body.appendChild(p);
+    },idx*220);
+  })(i);
+}
+</script>
+</body>
+</html>
